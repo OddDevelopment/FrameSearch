@@ -1,2 +1,14 @@
 ## How to use FrameSearch NOW!
-1. Drag the following button to your bookmarks -> <a href="javascript:(function(){document.body.innerHTML+='<iframe src=&quot;https://example.com&quot; style=&quot;width:100%;height:100%;position:fixed;top:0;left:0;z-index:999999;background:#FFF;border:none;&quot;></iframe>'})();" style="color: blue;">Embed safesearch</a>
+1. Make a bookmark with the following value as the link:
+```
+javascript:(function(){document.body.innerHTML+='<iframe src="https://proxys.lol/ui" style="width:100%;height:100%;position:fixed;top:0;left:0;z-index:999999;background:#FFF;border:none;"></iframe>'})();
+```
+2. Go to [Google](https://google.com) or another site (NOTE: Some sites may not work so we recommend google)
+3. Now run the extention and your in!
+
+Tips for using:
+Do not directly use the search bar, We recommend using a proxys on top of FrameSearch you can enter a link to a custom webproxy or use one of the listed tested ones!
+
+## About the project and dev. (Boring stuff)
+
+#### [View the dev log here!](http://framesearch.odd.gay/dev)
