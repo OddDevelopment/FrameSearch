@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>FrameSearch</title>
+</head>
+
+<body>
+  <div id="iframe-container">
+    <iframe id="website-iframe" src="" frameborder="0"></iframe>
+  </div>
+  <style>
+    body,
+    html {
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+      background: #212121;
+      /* Changed background color */
+      font-family: Arial, sans-serif;
+      color: #fff;
+      /* Changed text color */
+    }
+
+    #iframe-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #212121;
+      /* Changed background color */
+    }
+
+    #iframe-container iframe {
+      width: 100%;
+      height: 100%;
+    }
+
+    #search-bar-container {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 9999;
+      text-align: center;
+    }
+
+    #search-bar {
+      display: flex;
+      align-items: center;
+      /* Center the input and button horizontally */
+      max-width: 800px;
+      /* Increased max-width for wider search bar */
+      background: #fff;
+      /* Changed background color to white */
+      border-radius: 20px;
+      /* Added border-radius for rounded corners */
+      overflow: hidden;
+      margin-bottom: 10px;
+      padding: 5px;
+      /* Added padding for the input and button */
+    }
+
+    #search-input {
+      flex-grow: 1;
+      width: 100%;
+      /* Set width to 100% to make the input longer */
+      height: 30px;
+      padding: 5px;
+      font-size: 16px;
+      border: none;
+      color: #000;
+      /* Changed text color to black */
+      background: transparent;
+      /* Added transparent background */
+    }
+
+    #search-submit {
+      margin-left: 10px;
+      /* Added margin to separate from the input */
+      padding: 15px 20px;
+      /* Reduced horizontal padding for less width */
+      font-size: 24px;
+      /* Increased font size for the "Go" text */
+      border: none;
+      border-radius: 20px;
+      /* Added border-radius for a rounded button */
+      background: #007bff;
+      /* Changed button color to blue */
+      color: #fff;
+      cursor: pointer;
+    }
+
+    #title {
+      font-size: 48px;
+      /* Increased font size */
+      font-weight: bold;
+      margin-bottom: 10px;
+      /* Increased margin for spacing */
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      /* Changed to a more rounded font */
+    }
+
+    #subtitle {
+      font-size: 18px;
+      /* Increased font size */
+      color: #777;
+      margin-bottom: 15px;
+    }
+
+    #recommended-sites {
+      margin-top: 15px;
+      text-align: left;
+    }
+
+    #recommended-sites ul {
+      padding: 0;
+      list-style-type: none;
+      display: flex;
+      /* Display list items next to each other */
+    }
+
+    #recommended-sites li {
+      display: flex;
+      align-items: center;
+      margin-right: 10px;
+      cursor: pointer;
+    }
+
+    #recommended-sites li img {
+      width: 100px;
+      /* Increased icon width */
+      height: 100px;
+      /* Increased icon height */
+      margin-right: 5px;
+    }
+  </style>
+  <div id="search-bar-container">
+    <div id="recommended-sites">
+      <ul>
+        <li
+          data-url="https://docs-opensocial.googleusercontent.com/gadgets/ifr?url=https://cdn.jsdelivr.net/gh/ko1ov/to@1e8a949f89fcf2b110640c41a0705db01405d161/d7uf4.xml#">
+          <img src="img/1v1.webp" alt="Proxy Icon">
+        </li>
+        <li data-url="games/slope">
+          <img src="img/slope.webp" alt="Proxy Icon">
+        </li>
+        <li data-url="games/subway">
+          <img src="img/subway.webp" alt="Proxy Icon">
+        </li>
+      </ul>
+    </div>
+  </div>
+  <script>
+    const iframeContainer = document.getElementById('iframe-container');
+const websiteIframe = document.getElementById('website-iframe');
+const searchInput = document.getElementById('search-input');
+const searchSubmitBtn = document.getElementById('search-submit');
+const searchBarContainer = document.getElementById('search-bar-container');
+const recommendedSites = document.getElementById('recommended-sites');
+
+// Function to load a website in the IFrame
+function loadWebsite(url) {
+  websiteIframe.src = url;
+  iframeContainer.style.display = 'flex';
+  searchBarContainer.style.display = 'none';
+}
+
+// Add click event listeners to the recommended site list items
+recommendedSites.querySelectorAll('li').forEach((site) => {
+  site.addEventListener('click', function () {
+    const url = this.getAttribute('data-url');
+    loadWebsite(url);
+  });
+});
+
+searchSubmitBtn.addEventListener('click', function () {
+  const url = searchInput.value;
+  if (url) {
+    loadWebsite(url);
+  }
+});
+
+// Event listener for Enter key in the search input field
+searchInput.addEventListener('keydown', function (e) {
+  if (e.key === 'Enter') {
+    const url = searchInput.value;
+    if (url) {
+      loadWebsite(url);
+    }
+  }
+});
+
+// Warn the user before closing the page
+window.addEventListener('beforeunload', function (e) {
+  e.preventDefault();
+  e.returnValue = '';
+});
+
+  </script>
+</body>
+
+</html>

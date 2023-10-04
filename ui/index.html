@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>FrameSearch</title>
+</head>
+
+<body>
+  <div id="iframe-container">
+    <iframe id="website-iframe" src="" frameborder="0"></iframe>
+  </div>
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+      background: #212121;
+      font-family: Arial, sans-serif;
+      color: #fff;
+    }
+
+    #iframe-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #212121;
+    }
+
+    #iframe-container iframe {
+      width: 100%;
+      height: 100%;
+    }
+
+    #search-bar-container {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 9999;
+      text-align: center;
+    }
+
+    #search-bar {
+      display: flex;
+      align-items: center;
+      max-width: 800px;
+      background: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      margin-bottom: 10px;
+      padding: 5px;
+    }
+
+    #search-input {
+      flex-grow: 1;
+      width: 100%;
+      height: 30px;
+      padding: 5px;
+      font-size: 16px;
+      border: none;
+      color: #000;
+      background: transparent;
+    }
+
+    #search-submit {
+      margin-left: 10px;
+      padding: 15px 20px;
+      font-size: 24px;
+      border: none;
+      border-radius: 20px;
+      background: #007bff;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    #title {
+      font-size: 48px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+
+    #subtitle {
+      font-size: 18px;
+      color: #777;
+      margin-bottom: 15px;
+    }
+
+    #recommended-sites {
+      margin-top: 15px;
+      text-align: left;
+    }
+
+    #recommended-sites ul {
+      padding: 0;
+      list-style-type: none;
+      display: flex;
+    }
+
+    #recommended-sites li {
+      display: flex;
+      align-items: center;
+      margin-right: 10px;
+      cursor: pointer;
+    }
+
+    #recommended-sites li img {
+      width: 100px;
+      height: 100px;
+      margin-right: 5px;
+    }
+  </style>
+  <div id="search-bar-container">
+    <div id="title">FrameSearch</div>
+    <div id="subtitle">Because privacy should be a human right!<br>Coded with love by <a href="https://odd.gay">Odd</a>
+      and sponsored by <a href="https://solarhosting.cc">SolarHosting</a>.</div>
+    <div id="search-bar">
+      <input id="search-input" type="text" placeholder="https:// ......">
+    </div>
+    <button id="search-submit">Go</button>
+    <div id="recommended-sites">
+      <ul>
+        <li data-url="pages/chrome">
+          <img src="assets/chrome_icon.png" alt="Chrome Icon">
+        </li>
+        <li data-url="pages/firefox">
+          <img src="assets/firefox.png" alt="Chrome Icon">
+        </li>
+        <li data-url="https://piped.frontendfriendly.xyz/trending">
+          <img src="assets/piped_icon.webp" alt="piped">
+        </li>
+        <li data-url="https://searx.pro/">
+          <img src="assets/search_icon.png" alt="search">
+        </li>
+        <li data-url="pages/games">
+          <img src="assets/games.png" alt="Proxy Icon">
+        </li>
+        <li data-url="https://frame.realoddpvp.repl.co/">
+          <img src="assets/chat.png" alt="Proxy Icon">
+        </li>
+      </ul>
+    </div>
+  </div>
+  <script>
+    const iframeContainer = document.getElementById('iframe-container');
+const websiteIframe = document.getElementById('website-iframe');
+const searchInput = document.getElementById('search-input');
+const searchSubmitBtn = document.getElementById('search-submit');
+const searchBarContainer = document.getElementById('search-bar-container');
+const recommendedSites = document.getElementById('recommended-sites');
+
+function loadWebsite(url) {
+  websiteIframe.src = url;
+  iframeContainer.style.display = 'flex';
+  searchBarContainer.style.display = 'none';
+}
+
+recommendedSites.querySelectorAll('li').forEach((site) => {
+  site.addEventListener('click', function () {
+    const url = this.getAttribute('data-url');
+    loadWebsite(url);
+  });
+});
+
+searchSubmitBtn.addEventListener('click', function () {
+  const url = searchInput.value;
+  if (url) {
+    loadWebsite(url);
+  }
+});
+
+searchInput.addEventListener('keydown', function (e) {
+  if (e.key === 'Enter') {
+    const url = searchInput.value;
+    if (url) {
+      loadWebsite(url);
+    }
+  }
+});
+
+window.addEventListener('beforeunload', function (e) {
+  e.preventDefault();
+  e.returnValue = '';
+});
+  </script>
+</body>
+
+</html>

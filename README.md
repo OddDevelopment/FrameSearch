@@ -8,7 +8,3 @@ javascript:(function(){document.body.innerHTML+='<iframe src="https://proxys.lol
 
 Tips for using:
 Do not directly use the search bar, We recommend using a proxys on top of FrameSearch you can enter a link to a custom webproxy or use one of the listed tested ones!
-
-## About the project and dev. (Boring stuff)
-
-#### [View the dev log here!](http://framesearch.odd.gay/dev)
