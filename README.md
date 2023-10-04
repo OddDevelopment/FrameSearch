@@ -1,7 +1,7 @@
 ## How to use FrameSearch NOW!
 1. Make a bookmark with the following value as the link:
 ```
-javascript:(function(){document.body.innerHTML+='<iframe src="https://proxys.lol/ui" style="width:100%;height:100%;position:fixed;top:0;left:0;z-index:999999;background:#FFF;border:none;"></iframe>'})();
+javascript:(function(){document.body.innerHTML+='<iframe src="https://odddevelopment.github.io/FrameSearch/ui/" style="width:100%;height:100%;position:fixed;top:0;left:0;z-index:999999;background:#FFF;border:none;"></iframe>'})();
 ```
 2. Go to [Google](https://google.com) or another site (NOTE: Some sites may not work so we recommend google)
 3. Now run the extention and your in!
